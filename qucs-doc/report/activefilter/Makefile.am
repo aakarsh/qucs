@@ -26,12 +26,13 @@ include $(top_srcdir)/qucstex.mk
 
 SUBDIRS = pics
 
-EXTRA_DIST = $(SOURCES)
+EXTRA_DIST = $(SOURCES) $(BIBFILE)
 
 SOURCES = activefilter.tex content.tex
+BIBFILE = activefilter.bib
 TARGETS = activefilter.pdf
 
-activefilter.pdf: $(SOURCES)
+activefilter.pdf: $(SOURCES) $(BIBFILE)
 
 pics-report:
 	cd pics && $(MAKE) $(AM_MAKEFLAGS) report
