@@ -67,6 +67,7 @@ install:
       sudo apt-get install build-essential;
       sudo apt-get install libqt4-dev libqt4-qt3support;
       sudo apt-get install automake libtool gperf flex bison;
+      sudo apt-get install latex2html;
     fi
 
   # We want to compile with g++ 4.8 when rather than the default g++
