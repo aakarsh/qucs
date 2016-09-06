@@ -100,8 +100,9 @@ SUFFIXES = .dvi .tex .pdf .ps .eps .fig .frg .m
 	$(EPSTOPDF) $< -o=$@
 
 if USE_OCTAVE
+OCTAVE_PATH = --path $(srcdir)
 .m.eps:
-	$(OCTAVE) --path $(srcdir) $<
+	$(OCTAVE) $(OCTAVE_PATH) $<
 else
 .m.eps:
 	@echo -n not using octave to update "$@".
