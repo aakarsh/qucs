@@ -31,3 +31,6 @@ TEX_ENV = export TEXINPUTS=$(srcdir):$(srcdir)/..:./..:
 	$(TEX_ENV); $(PDFLATEX) $(PDFLATEX_FLAGS) $<
 	$(TEX_ENV); $(PDFLATEX) $(PDFLATEX_FLAGS) $<
 	$(TEX_ENV); $(PDFLATEX) $(PDFLATEX_FLAGS) -interaction=batchmode $<
+
+.eps.pdf:
+	$(EPSTOPDF) $< -o=$@
