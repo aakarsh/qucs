@@ -89,6 +89,11 @@ AC_SUBST(enable_html_docs)
 AC_SUBST(enable_latex_docs)
 ])
 
+# sometimes you may need special flags.
+# (such as -shell-escape?)
+# (not implemented any further)
+AC_SUBST([PDFLATEX_FLAGS])
+
 dnl Check for doxygen.
 CHECK_DOXYGEN
 

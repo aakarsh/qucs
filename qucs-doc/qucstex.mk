@@ -23,9 +23,11 @@
 # Boston, MA 02110-1301, USA.
 #
 
+PDFLATEX_FLAGS = @PDFLATEX_FLAGS@
+
 TEX_ENV = export TEXINPUTS=$(srcdir):$(srcdir)/..:./..:
 
 .tex.pdf:
-	$(TEX_ENV); $(PDFLATEX) $<
-	$(TEX_ENV); $(PDFLATEX) $<
-	$(TEX_ENV); $(PDFLATEX) -interaction=batchmode $<
+	$(TEX_ENV); $(PDFLATEX) $(PDFLATEX_FLAGS) $<
+	$(TEX_ENV); $(PDFLATEX) $(PDFLATEX_FLAGS) $<
+	$(TEX_ENV); $(PDFLATEX) $(PDFLATEX_FLAGS) -interaction=batchmode $<
