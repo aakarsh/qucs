@@ -34,6 +34,11 @@ matrix:
     - os: osx
       compiler: gcc
 
+addons:
+  apt:
+    packages:
+      - octave
+
 # Set secure environment with encrypted string containing GIT_NAME, GIT_EMAIL and GH_TOKEN
 env:
   global:
