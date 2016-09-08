@@ -25,7 +25,7 @@
 
 PDFLATEX_FLAGS = @PDFLATEX_FLAGS@
 
-TEXINPUTS = (srcdir):$(srcdir)/..:./..:$(MORE_TEXINPUTS)
+TEXINPUTS = $(srcdir):$(srcdir)/..:./..:$(MORE_TEXINPUTS)
 
 TEX_ENV = export TEXINPUTS=$(TEXINPUTS)
 BIB_ENV = export BIBINPUTS=$(srcdir):
