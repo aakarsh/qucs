@@ -25,12 +25,15 @@
 
 PDFLATEX_FLAGS = @PDFLATEX_FLAGS@
 
-TEX_ENV = export TEXINPUTS=$(srcdir):$(srcdir)/..:./..:
+TEXINPUTS = (srcdir):$(srcdir)/..:./..:$(MORE_TEXINPUTS)
+
+TEX_ENV = export TEXINPUTS=$(TEXINPUTS)
 BIB_ENV = export BIBINPUTS=$(srcdir):
 
 .tex.pdf:
 	$(TEX_ENV); $(PDFLATEX) $(PDFLATEX_FLAGS) $<
 	$(TEX_ENV); $(PDFLATEX) $(PDFLATEX_FLAGS) $<
+	$(texpdfHACK)
 	$(TEX_ENV); $(PDFLATEX) $(PDFLATEX_FLAGS) -interaction=batchmode $<
 
 .tex.dvi:

@@ -57,6 +57,8 @@ SUFFIXES = .tex .dvi .ps
 docdatadir = ${prefix}/share/qucs/docs/report
 docdata_DATA = ${TARGETS}
 
+#insane hack.
+activefilter.pdf: PDFLATEX_FLAGS=--shell-escape
 
 CLEANFILES = *~ *.bak *.aux *.log *.toc *.pdf *.bbl *.blg *.dvi *.brf *.out *.idx *.pgf-plot.table *.pgf-plot.gnuplot
 MAINTAINERCLEANFILES = Makefile.in
