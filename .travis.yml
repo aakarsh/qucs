@@ -164,10 +164,13 @@ script:
     fi
   - ./configure --disable-dependency-tracking --with-gtest=/tmp/gtest ${CONFIGURE_FLAGS}
   - if [[ $LINUX && $CLANG ]]; then
+      echo "make distcheck DISTCHECK_CONFIGURE_FLAGS='--with-gtest=/tmp/gtest --enable-doc'";
       make distcheck DISTCHECK_CONFIGURE_FLAGS='--with-gtest=/tmp/gtest --enable-doc';
     elif [ "$OSX" != true ]; then
+      echo "make distcheck DISTCHECK_CONFIGURE_FLAGS=--with-gtest=/tmp/gtest";
       make distcheck DISTCHECK_CONFIGURE_FLAGS=--with-gtest=/tmp/gtest;
     else
+      echo "make check";
       make check;
     fi
   - echo $TRAVIS_BRANCH
