@@ -94,6 +94,13 @@ AC_SUBST(enable_latex_docs)
 # (not implemented any further)
 AC_SUBST([PDFLATEX_FLAGS])
 
+dnl Check for MacOSX.
+case $host_os in
+  *darwin*) MACOSX=yes ;;
+  *)        MACOSX=no  ;;
+esac
+AM_CONDITIONAL(MACOSX, test x$MACOSX = xyes)
+
 dnl Check for doxygen.
 CHECK_DOXYGEN
 

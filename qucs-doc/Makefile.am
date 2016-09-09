@@ -22,6 +22,11 @@
 # Boston, MA 02110-1301, USA.  
 #
 
+if MACOSX
+check:
+	:
+endif
+
 SUBDIRS = technical tutorial report doxygen
 
 DOCPDF = tutorial report technical
