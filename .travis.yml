@@ -159,13 +159,16 @@ script:
 
   # run all checks
   - ./bootstrap
-  - ./configure --disable-dependency-tracking --with-gtest=/tmp/gtest
+  - if [ "$OSX" != true ]; then
+       CONFIGURE_FLAGS=--disable-doc;
+    fi
+  - ./configure --disable-dependency-tracking --with-gtest=/tmp/gtest ${CONFIGURE_FLAGS}
   - if [[ $LINUX && $CLANG ]]; then
       make distcheck DISTCHECK_CONFIGURE_FLAGS='--with-gtest=/tmp/gtest --enable-doc';
     elif [ "$OSX" != true ]; then
       make distcheck DISTCHECK_CONFIGURE_FLAGS=--with-gtest=/tmp/gtest;
     else
-      make check
+      make check;
     fi
   - echo $TRAVIS_BRANCH
 
