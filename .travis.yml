@@ -162,16 +162,17 @@ script:
   - if [ "$OSX" = true ]; then
        CONFIGURE_FLAGS=--disable-doc;
     fi
-  - ./configure --disable-dependency-tracking --with-gtest=/tmp/gtest ${CONFIGURE_FLAGS}
+  - DISTCHECK_CONFIGURE_FLAGS="--with-gtest=/tmp/gtest --disable-dependency-tracking"
   - if [[ $LINUX && $CLANG ]]; then
-      echo "make distcheck DISTCHECK_CONFIGURE_FLAGS='--with-gtest=/tmp/gtest --enable-doc'";
-      make distcheck DISTCHECK_CONFIGURE_FLAGS='--with-gtest=/tmp/gtest --enable-doc';
-    elif [ "$OSX" != true ]; then
-      echo "make distcheck DISTCHECK_CONFIGURE_FLAGS=--with-gtest=/tmp/gtest";
-      make distcheck DISTCHECK_CONFIGURE_FLAGS=--with-gtest=/tmp/gtest;
-    else
-      echo "make check";
+       DISTCHECK_CONFIGURE_FLAGS="--with-gtest=/tmp/gtest --enable-doc"
+    fi
+  - echo ${CONFIGURE_FLAGS}
+  - echo ${DISTCHECK_CONFIGURE_FLAGS}
+  - ./configure --disable-dependency-tracking --with-gtest=/tmp/gtest ${CONFIGURE_FLAGS}
+  - if [ "$OSX" != true ]; then
       make check;
+    else
+      make distcheck DISTCHECK_CONFIGURE_FLAGS="${DISTCHECK_CONFIGURE_FLAGS}";
     fi
   - echo $TRAVIS_BRANCH
 
