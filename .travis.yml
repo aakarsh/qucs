@@ -159,7 +159,7 @@ script:
 
   # run all checks
   - ./bootstrap
-  - if [ "$OSX" == true ]; then
+  - if [ "$OSX" = true ]; then
        CONFIGURE_FLAGS=--disable-doc;
     fi
   - ./configure --disable-dependency-tracking --with-gtest=/tmp/gtest ${CONFIGURE_FLAGS}
