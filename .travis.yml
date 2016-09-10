@@ -159,8 +159,9 @@ script:
 
   # run all checks
   - ./bootstrap
-  - if [ "$OSX" = true ]; then
-       CONFIGURE_FLAGS=--disable-doc;
+  - CONFIGURE_FLAGS=--disable-doc
+  - if [[ $LINUX && $CLANG ]; then
+       CONFIGURE_FLAGS=;
     fi
   - DISTCHECK_CONFIGURE_FLAGS="--with-gtest=/tmp/gtest --disable-dependency-tracking"
   - if [[ $LINUX && $CLANG ]]; then
@@ -169,7 +170,7 @@ script:
   - echo ${CONFIGURE_FLAGS}
   - echo ${DISTCHECK_CONFIGURE_FLAGS}
   - ./configure --disable-dependency-tracking --with-gtest=/tmp/gtest ${CONFIGURE_FLAGS}
-  - if [ "$OSX" != true ]; then
+  - if [ "$OSX" = true ]; then
       make check;
     else
       make distcheck DISTCHECK_CONFIGURE_FLAGS="${DISTCHECK_CONFIGURE_FLAGS}";
