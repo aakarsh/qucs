@@ -164,7 +164,7 @@ script:
     fi
   - DISTCHECK_CONFIGURE_FLAGS="--with-gtest=/tmp/gtest --disable-dependency-tracking"
   - if [[ $LINUX && $CLANG ]]; then
-       DISTCHECK_CONFIGURE_FLAGS="--with-gtest=/tmp/gtest --enable-doc"
+       DISTCHECK_CONFIGURE_FLAGS="--with-gtest=/tmp/gtest --enable-doc";
     fi
   - echo ${CONFIGURE_FLAGS}
   - echo ${DISTCHECK_CONFIGURE_FLAGS}
